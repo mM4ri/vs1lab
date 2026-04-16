@@ -38,6 +38,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+   background-color: var(--background-color);
 }
 
 a {
@@ -47,10 +48,54 @@ a {
 /* ### TODO ### Styles for other HTML elements */
 
 /* ... your code here ... */
+main {
+  flex: 1;
+}
 
+h1, h2 {
+  font-weight: bold;
+}
+
+fieldset {
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1rem 1rem 1rem;
+}
+
+legend {
+  padding: 0 0.25rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--gray-color);
+  font-size: 1.1rem;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  font: inherit;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* Grid styles (no changes required) */
-
+/* ende */
 .row {
   width: 100%;
   display: flex;
@@ -110,28 +155,147 @@ a {
 /* ### TODO ### Styles for Header Component */
 
 /* ... your code here ... */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: #d9d9d9;
+}
 
+.header__image {
+  width: 3.5rem;
+  height: auto;
+}
+
+.header__title {
+  font-size: 3rem;
+}
+
+.header__navigation {
+  font-size: 1.2rem;
+}
 
 /* ### TODO ### Styles for Main Component */
 
 /* ... your code here ... */
 
-
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem;
+  gap: 2rem;
+}
 /* ### TODO ### Styles for Tagging component */
+.tagging {
+  width: 23%;
+}
 
+.tagging h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+#tag-form {
+  width: 100%;
+}
 /* ... your code here ... */
 
 
 /* ### TODO ### Styles for Discovery component */
 
 /* ... your code here ... */
+.discovery {
+  width: 70%;
+}
 
+.discovery__title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.discovery__search {
+  margin-bottom: 2rem;
+}
+
+.discovery__search input[type="text"] {
+  width: 13rem;
+}
+
+.discovery__search input[type="submit"] {
+  width: 13rem;
+}
+
+.discovery__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.discovery__taglist {
+  width: 32%;
+}
+
+.discovery__results li {
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: var(--link-color);
+  font-size: 1.1rem;
+  background-color: #d9d9d9;
+}
+
+.discovery__map {
+  width: 65%;
+}
+
+.discovery__map span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--gray-color);
+  font-size: 1.1rem;
+}
 
 /* ### TODO ### Styles for Footer Component */
 
 /* ... your code here ... */
-
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 3rem;
+  font-size: 1.1rem;
+  background-color: #d9d9d9;
+}
 
 /* ### TODO ### Media Queries */
 
 /* ... your code here ... */
+@media (max-width: 850px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .tagging,
+  .discovery,
+  .discovery__taglist,
+  .discovery__map
+  .col-1,                       /* col-KLASSEN  */
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9,
+  .col-10,
+  .col-11,
+  .col-12  {
+    width: 100%;
+  }
+
+  .discovery__wrapper {
+    flex-direction: column;
+  }
+}
