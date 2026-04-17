@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoTagApp</title>
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+</head>
+
+<body>
+    <header class="header">
+        <img src="./images/location.png" class="header__image" alt="an image of a map and location">
+        <h1 class="header__title">GeoTagApp</h1>
+        <nav class="header__navigation">
+            <a href="#">About</a> | <a href="#">Help</a> | <a href="/">Home</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="row">
+
+            <section class="main__tagging tagging col-4">
+                <h2>Tagging</h2>
+                <form id="tag-form" action="/tagging" method="post">
+                    <fieldset>
+                        <legend>Add a new GeoTag</legend>
+
+                        <label for="latitude">Latitude:</label>
+                        <input type="number" id="latitude" name="latitude" value="49.01379" readonly>
+
+                        <label for="longitude">Longitude:</label>
+                        <input type="number" id="longitude" name="longitude" value="8.390071" readonly>
+
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required maxlength="10" placeholder="e.g. Central Berlin">
+
+                        <label for="hashtag">Hashtag:</label>
+                        <input type="text" id="hashtag" name="hashtag" pattern="#[A-Za-z0-9]{1,10}" placeholder="e.g. #ber">
+
+                        <button type="submit" id="tag-submit">Add Tag</button>
+                    </fieldset>
+                </form>
+            </section>
+
+            <section class="main__discovery discovery col-8">
+                <h2 class="discovery__title">Discovery</h2>
+
+                <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
+                    <fieldset>
+                        <legend>Search</legend>
+                        <label for="searchterm">Search term or keywords:</label>
+                        <input type="text" id="searchterm" name="searchterm" placeholder="e.g. Berlin">
+                        
+                        <input type="hidden" id="search_latitude" name="latitude" value="49.01379">
+                        <input type="hidden" id="search_longitude" name="longitude" value="8.390071">
+                        
+                        <button type="submit" id="search-submit">Search</button>
+                    </fieldset>
+                </form>
+
+                <div class="discovery__wrapper row">
+                    
+                    <div class="discovery__taglist col-4">
+                        <div id="discoveryResults">
+                            <div class="tag-entry" style="background: #eee; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+                                <a href="#">Castle (49.01379, 8.404435)</a><br>#sight
+                            </div>
+                            <div class="tag-entry" style="background: #eee; padding: 10px; border-radius: 5px;">
+                                <a href="#">IWI (49.01379, 8.390071)</a><br>#edu
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="discovery__map col-8">
+                        <img src="./images/mapview.jpg" alt="a virtual map" id="result-img" style="width: 100%; border-radius: 5px;">
+                        <p id="result-stats">Result map</p>
+                    </div>
+
+                </div> </section>
+
+        </div> </main>
+
+    <footer class="footer">
+        <span>(c) 2021/22 HKA_IWI_VSYS</span>
+    </footer>
+</body>
+</html>

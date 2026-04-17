@@ -1,0 +1,191 @@
+/* File origin: VS1LAB A1b   
+  CSS style is BEM. 
+*/
+
+/* Variables - Hier habe ich ein einheitliches Blau definiert */
+:root {
+  --main-blue: #0066cc; 
+  --link-color: #00B7FF;
+  --background-color: #efefef;
+  --border-color: #cdcdcd;
+  --gray-color: #666;
+}
+
+/* Global styling */
+html {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+a {
+  color: var(--link-color);
+}
+
+/* HTML element styles */
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+label {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="hidden"],
+button {
+  font: inherit;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: var(--main-blue);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #004d99;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Grid styles */
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.col-4 { width: calc(33.33% - 1rem); }
+.col-8 { width: calc(66.66% - 1rem); }
+
+/* Header Component */
+.header {
+  background-color: var(--main-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.header__title { font-size: 2rem; }
+.header__image { width: 50px; height: 50px; }
+.header__navigation a { color: white; text-decoration: none; margin-left: 1rem; }
+.header__navigation a:hover { text-decoration: underline; }
+
+/* Main Component */
+.main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Tagging component */
+.tagging form {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Discovery component */
+.discovery__search input[type="text"] {
+    width: 60%; /* Hier wird der e.g. Berlin Balken kürzer */
+    max-width: 300px;
+}
+
+.discovery__wrapper {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.discovery__taglist {
+  flex: 1;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Die grauen Boxen für die Ergebnisse */
+.tag-entry {
+  background: #eeeeee;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+}
+
+.discovery__map {
+  flex: 2;
+  position: relative;
+}
+
+#mapView, #result-img {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+}
+
+/* Footer Component */
+.footer {
+  background-color: var(--main-blue);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .row, .discovery__wrapper {
+    flex-direction: column;
+  }
+  .col-4, .col-8 {
+    width: 100%;
+  }
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
