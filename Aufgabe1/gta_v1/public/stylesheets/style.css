@@ -251,8 +251,9 @@ button:hover {
 
 /* ### TODO ### Media Queries */
 
-/* ... your code here ... */
+/* ... your code herxxe ... */
 @media (max-width: 850px) {
+  
 
   .main {
     flex-direction: column;
