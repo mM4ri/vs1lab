@@ -134,12 +134,6 @@ class MapManager {
     }
 }
 
-/**
- * TODO: 'updateLocation'
- * A function to retrieve the current location and update the page.
- * It is called once the page has been fully loaded.
- */
-// ... your code here ...
 function updateLocation() {
     var latElement = document.getElementsByName("latitude");
     var longElement = document.getElementsByName("longitude");
@@ -159,8 +153,9 @@ function updateLocation() {
     manager.initMap(lat, long);
     manager.updateMarkers(lat, long);
 
-    document.getElementsByClassName("discovery__results")[0].childNodes.forEach((node) => {
-        //if (node.tag == "img") node.remove;
+    var mapElements = document.getElementsByClassName("discovery__map")[0];
+    mapElements.childNodes.forEach((node) => {
+        if ("IMG" === node.nodeName || "SPAN" === node.nodeName) mapElements.removeChild(node);
     });
 }    
 
