@@ -31,6 +31,14 @@ const GeoTag = require('../models/geotag');
 // eslint-disable-next-line no-unused-vars
 const GeoTagStore = require('../models/geotag-store');
 
+// GEÄNDERT: Beispieldaten einlesen
+
+const GeoTagExamples = require('../models/geotag-examples');
+
+const geoTagStore = GeoTagExamples.geoTagStore;
+
+const searchRadius = 0.02;
+//Ende
 /**
  * Route '/' for HTTP 'GET' requests.
  * (http://expressjs.com/de/4x/api.html#app.get.method)
@@ -42,7 +50,12 @@ const GeoTagStore = require('../models/geotag-store');
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [] })
+  res.render('index', { 
+    taglist: [] ,
+
+    latitude: 49.01379, //geändert
+
+    longitude: 8.390071});//geändert
 });
 
 /**
@@ -62,6 +75,44 @@ router.get('/', (req, res) => {
 
 // TODO: ... your code here ...
 
+// GEÄNDERT
+router.post('/tagging', (req, res) => {
+
+  var geotag = new GeoTag(
+
+    req.body.latitude,
+
+    req.body.longitude,
+
+    req.body.name,
+
+    req.body.hashtag
+
+  );
+
+  geoTagStore.addGeoTag(geotag);
+
+  var location = {
+
+    latitude: req.body.latitude,
+
+    longitude: req.body.longitude
+
+  };
+
+  var taglist = geoTagStore.getNearbyGeoTags(location, searchRadius);
+
+  res.render('index', {
+
+    taglist: taglist,
+
+    latitude: req.body.latitude,
+
+    longitude: req.body.longitude
+
+  });
+
+});
 /**
  * Route '/discovery' for HTTP 'POST' requests.
  * (http://expressjs.com/de/4x/api.html#app.post.method)
@@ -79,5 +130,39 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
+// GEÄNDERT
 
+router.post('/discovery', (req, res) => {
+
+  var location = {
+
+    latitude: req.body.latitude,
+
+    longitude: req.body.longitude
+
+  };
+
+  var taglist;
+
+  if (req.body.searchterm !== '') {
+
+    taglist = geoTagStore.searchNearbyGeoTags(location, searchRadius, req.body.searchterm);
+
+  } else {
+
+    taglist = geoTagStore.getNearbyGeoTags(location, searchRadius);
+
+  }
+
+  res.render('index', {
+
+    taglist: taglist,
+
+    latitude: req.body.latitude,
+
+    longitude: req.body.longitude
+
+  });
+
+});
 module.exports = router;

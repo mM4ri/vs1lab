@@ -300,3 +300,6 @@ img {
     flex-direction: column;
   }
 }
+#map { 
+  height: 500px;
+}
